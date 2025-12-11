@@ -294,7 +294,8 @@ async function getGroupAdmins(meta){
 async function connect(){
   const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
   const { version } = await fetchLatestBaileysVersion();
-  const sock = makeWASocket({ auth: state, version, printQRInTerminal: false, browser: ['Spectrum','Chrome','1.0']
+  const pino = require('pino');
+  const sock = makeWASocket({ auth: state, version, printQRInTerminal: false, logger: pino({ level: 'silent' }), browser: ['Spectrum','Chrome','1.0']
 });
   sock.ev.on('creds.update', saveCreds);
   sock.ev.on('connection.update', up => {
