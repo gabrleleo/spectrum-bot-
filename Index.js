@@ -294,8 +294,8 @@ async function getGroupAdmins(meta){
 async function connect(){
   const { state, saveCreds } = await useMultiFileAuthState(AUTH_DIR);
   const { version } = await fetchLatestBaileysVersion();
-  const sock = makeWASocket({ auth: state, version, printQRInTerminal: false, logger: { level: 'silent' }, browser: ['Spectrum','Chrome','1.0'] });
-
+  const sock = makeWASocket({ auth: state, version, printQRInTerminal: false, browser: ['Spectrum','Chrome','1.0']
+});
   sock.ev.on('creds.update', saveCreds);
   sock.ev.on('connection.update', up => {
     const { connection, lastDisconnect, qr } = up;
@@ -363,7 +363,7 @@ async function connect(){
         // Buttons (visible to all, owner tab hidden unless owner)
         const buttons = [
           { buttonId: `${prefix}tab_zoeiras`, buttonText: { displayText: '😂 Zoeiras' }, type: 1 },
-          { buttonId: `${prefix}tab_grupo`, buttonText: { displayText: '🛡️ Grupo' }, type: 1 },
+          { buttonId: `${prefix}tab_grupo`, buttonText: { displayText: '??️ Grupo' }, type: 1 },
           { buttonId: `${prefix}tab_privado`, buttonText: { displayText: '📬 Privado/Util' }, type: 1 },
           { buttonId: `${prefix}tab_ia`, buttonText: { displayText: '🤖 IA' }, type: 1 },
           { buttonId: `${prefix}tab_musica`, buttonText: { displayText: '🎵 Música' }, type: 1 },
